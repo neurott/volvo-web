@@ -31,6 +31,27 @@
   min-height: 80px;
 }
 
+/* Menú centrado verticalmente con el logo al hacer scroll, con letra un poco más grande */
+.background-header .main-nav {
+  align-items: center;
+}
+.background-header .main-nav .logo {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+.background-header .main-nav ul.nav {
+  margin-top: 0;
+}
+.background-header .main-nav .nav li {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+.background-header .main-nav .nav li a {
+  font-size: 16px;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
 /* ---- Nav del header: Iniciar sesión / Registrarse mas juntos y hover mas marcado ---- */
 .header-area .main-nav .nav li:has(> a[href="login.html"]),
 .header-area .main-nav .nav li:has(> a[href="registro.html"]) {
