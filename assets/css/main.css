@@ -893,9 +893,6 @@ Trending Style
   background-color: var(--color-primary);
 }
 
-
-
-
 .categories .main-button {
   margin-top: 30px;
 }
@@ -914,11 +911,6 @@ Trending Style
   overflow: hidden;
 }
 
-/*
----------------------------------------------
-CTA Style
----------------------------------------------
-*/
 
 .cta {
   position: relative;

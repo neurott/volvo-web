@@ -5,6 +5,53 @@
 .cart-link {
   position: relative;
 }
+
+/* ---- Iconos de la fila "Entrega inmediata / Contáctanos / Novedades / Blog" ---- */
+.features .item .image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: normal;
+  margin: 0 auto;
+}
+.features .item .image i {
+  font-size: 34px;
+  color: #fff;
+}
+
+/* ---- Logo del header: un poco de aire arriba y abajo, con o sin scroll ---- */
+.header-area .main-nav .logo {
+  margin-top: 12px;
+  margin-bottom: 24px;
+}
+
+/* La barra de scroll tiene 80px fijos y no dejaba espacio para el margin-bottom */
+.background-header {
+  height: auto !important;
+  min-height: 80px;
+}
+
+/* ---- Nav del header: Iniciar sesión / Registrarse mas juntos y hover mas marcado ---- */
+.header-area .main-nav .nav li:has(> a[href="login.html"]),
+.header-area .main-nav .nav li:has(> a[href="registro.html"]) {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.header-area .main-nav .nav li a[href="login.html"],
+.header-area .main-nav .nav li a[href="registro.html"] {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.header-area .main-nav .nav li:hover a {
+  background-color: rgba(255, 255, 255, 0.22);
+}
+@media (max-width: 767px) {
+  .header-area .main-nav .nav li a[href="login.html"],
+  .header-area .main-nav .nav li a[href="registro.html"] {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
 .busqueda-resultado {
   text-align: center;
   margin-bottom: 25px;
