@@ -240,6 +240,55 @@ color: #721c24;
   min-height: 100vh;
   margin: 0;
 }
+/* ---- Titulo del banner principal en index.html ---- */
+/* main.css lo pensó como h2; lo pasamos a h1 (es el titulo real de la
+   pagina, index.html no tenia ningun h1) y repetimos aqui su estilo
+   para no tocar la plantilla. */
+.main-banner .caption h1 {
+  font-size: 48px;
+  color: #fff;
+  margin-top: 20px;
+  position: relative;
+  padding-bottom: 5px;
+  margin-bottom: 40px;
+}
+.main-banner .caption h1:after {
+  position: absolute;
+  background-image: linear-gradient(to right, var(--color-accent), transparent);
+  border-radius: 4px;
+  width: 202px;
+  height: 6px;
+  content: '';
+  left: 125px;
+  bottom: 0;
+}
+@media (max-width: 767px) {
+  .main-banner .caption h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .main-banner .caption h1 {
+    font-size: 26px;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .main-banner .caption h1 {
+    font-size: 36px;
+  }
+}
+/* ---- Titulo de .page-heading ---- */
+/* main.css lo pensó como h3; lo pasamos a h1 (es el titulo real de la
+   pagina) y repetimos aqui su estilo para no tocar la plantilla. */
+.page-heading h1 {
+  font-size: 48px;
+  text-transform: uppercase;
+  color: #fff;
+  margin-top: 20px;
+  position: relative;
+  margin-bottom: 20px;
+}
 /* ---- Tarjetas del equipo en nosotros.html ---- */
 /* Reutilizan .features de la plantilla, pero con un icono en vez de una imagen */
 .equipo .item .image i {
