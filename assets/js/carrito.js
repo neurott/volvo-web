@@ -52,6 +52,7 @@ if (formQty) {
             id: window.productoActual.id,
             nombre: window.productoActual.nombre,
             precio: window.productoActual.precio,
+            imagen: window.productoActual.imagen,
             cantidad: cantidad
         };
         agregarAlCarrito(producto);
@@ -71,12 +72,10 @@ function renderizarCarrito() {
     const botonFinalizar = document.querySelector('#finalizar-compra');
 
     if (carrito.length === 0) {
-        const fila = document.createElement('tr');
-        fila.innerHTML = `<td colspan="5" style="text-align:center; padding: 30px 0;">Tu carrito está vacío. <a href="producto.html">Ver catálogo</a></td>`;
-        cuerpo.appendChild(fila);
+        cuerpo.innerHTML = `<p class="carrito-vacio">Tu carrito está vacío. <a href="producto.html">Ver catálogo</a></p>`;
         if (botonVaciar) botonVaciar.disabled = true;
         if (botonFinalizar) botonFinalizar.disabled = true;
-        document.querySelector('#carrito-total').textContent = `Total: ${formatearPrecio(0)}`;
+        document.querySelector('#carrito-total').textContent = formatearPrecio(0);
         actualizarContadorCarrito();
         return;
     }
@@ -90,22 +89,32 @@ function renderizarCarrito() {
         const subtotal = (item.precio * item.cantidad)
         total += subtotal
 
-        const fila = document.createElement('tr');
+        const miniatura = item.imagen
+            ? `<img src="${item.imagen}" alt="Portada de ${item.nombre}">`
+            : `<i class="fa-solid fa-gamepad" aria-hidden="true"></i>`;
+
+        const fila = document.createElement('div');
+        fila.className = 'cart-item';
         fila.innerHTML = `
-      <td>${item.nombre}</td>
-      <td>${formatearPrecio(item.precio)}</td>
-      <td>
-  <button class="btn-restar" data-id="${item.id}" aria-label="Restar una unidad de ${item.nombre}">-</button>
-  ${item.cantidad}
-  <button class="btn-sumar" data-id="${item.id}" aria-label="Sumar una unidad de ${item.nombre}">+</button>
-</td>
-      <td>${formatearPrecio(subtotal)}</td>
-      <td><button class="btn-eliminar" data-id="${item.id}" aria-label="Eliminar ${item.nombre} del carrito">Eliminar</button></td>
+      <div class="cart-item-thumb">${miniatura}</div>
+      <div class="cart-item-info">
+        <h5 class="cart-item-nombre">${item.nombre}</h5>
+        <div class="cart-item-cantidad">
+          <button class="btn-restar" data-id="${item.id}" aria-label="Restar una unidad de ${item.nombre}">−</button>
+          <span>${item.cantidad}</span>
+          <button class="btn-sumar" data-id="${item.id}" aria-label="Sumar una unidad de ${item.nombre}">+</button>
+        </div>
+        <button class="btn-eliminar" data-id="${item.id}" aria-label="Eliminar ${item.nombre} del carrito">Eliminar</button>
+      </div>
+      <div class="cart-item-precio">
+        <strong>${formatearPrecio(subtotal)}</strong>
+        <span class="cart-item-preciounit">${formatearPrecio(item.precio)} c/u</span>
+      </div>
     `;
         cuerpo.appendChild(fila);
     });
 
-    document.querySelector('#carrito-total').textContent = `Total: ${formatearPrecio(total)}`;
+    document.querySelector('#carrito-total').textContent = formatearPrecio(total);
     actualizarContadorCarrito();
 }
 const cuerpoCarrito = document.querySelector('#carrito-cuerpo');

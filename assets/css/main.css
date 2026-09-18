@@ -6,6 +6,16 @@
   --color-primary: #0E8AA8;
   --color-secondary: #14B8CE;
   --color-accent: #FF7A45;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+.form-control::placeholder {
+  color: #7a7a7a;
+  opacity: 1;
 }
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
@@ -48,6 +58,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0px;
   margin-bottom: 0px;
   font-weight: 700;
+  transition: color .3s ease;
 }
 
 ul {
@@ -58,6 +69,7 @@ p {
   font-size: 14px;
   line-height: 28px;
   color: #4a4a4a;
+  transition: color .3s ease;
 }
 
 img {
@@ -850,7 +862,7 @@ Trending Style
 }
 
 .most-played .item .down-content {
-  padding: 20px 15px 40px 15px;
+  padding: 20px 15px 25px 15px;
 }
 
 .most-played .item .down-content span.category {
@@ -867,21 +879,18 @@ Trending Style
 }
 
 .most-played .item .down-content a {
-  position: absolute;
-  display: inline-block;
+  display: block;
+  margin-top: 15px;
   text-align: center;
   line-height: 40px;
   height: 40px;
-  padding: 0px 15px;
   background-color: var(--color-accent);
   color: #fff;
   border-radius: 20px;
-  font-size: 15px;
+  font-size: 14px;
+  letter-spacing: .5px;
   text-transform: uppercase;
   font-weight: 600;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: -20px;
   transition: all .3s;
 }
 
@@ -891,10 +900,9 @@ Trending Style
 
 .most-played .item:hover .down-content a {
   background-color: var(--color-primary);
+  box-shadow: 0px 8px 16px rgba(14, 138, 168, .35);
+  transform: translateY(-2px);
 }
-
-
-
 
 .categories .main-button {
   margin-top: 30px;
@@ -914,11 +922,6 @@ Trending Style
   overflow: hidden;
 }
 
-/*
----------------------------------------------
-CTA Style
----------------------------------------------
-*/
 
 .cta {
   position: relative;
@@ -1383,6 +1386,8 @@ Responsive Style
 
 body {
   overflow-x: hidden;
+  background-color: #fff;
+  transition: background-color .3s ease;
 }
 
 @media (max-width: 767px) {
@@ -1504,4 +1509,143 @@ body {
   max-width: 720px;
   margin: 10px auto;
   display: block;
+}
+
+
+/*
+---------------------------------------------
+Tema Oscuro
+---------------------------------------------
+*/
+
+[data-theme="dark"] body {
+  background-color: #12151c;
+  color: #c7cad1;
+}
+
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: #f2f3f5;
+}
+
+[data-theme="dark"] p {
+  color: #c7cad1;
+}
+
+/* El fondo del nav solo es visible en el menú desplegable móvil (ver
+   media query max-width:767px en main.css); en escritorio el nav es
+   transparente sobre el header cian y no debe tocarse. */
+@media (max-width: 767px) {
+  [data-theme="dark"] .header-area .main-nav .nav,
+  [data-theme="dark"] .background-header .main-nav .nav {
+    background-color: #232834;
+  }
+
+  [data-theme="dark"] .header-area .main-nav .nav li a,
+  [data-theme="dark"] .background-header .main-nav .nav li a {
+    color: #f2f3f5;
+    background-color: #232834;
+  }
+
+  [data-theme="dark"] .header-area .main-nav .nav li,
+  [data-theme="dark"] .background-header .main-nav .nav li {
+    border-top-color: #2c313d;
+    background-color: #1b1f29;
+  }
+
+  [data-theme="dark"] .header-area .main-nav .nav li:first-child {
+    border-top-color: #2c313d;
+  }
+}
+
+[data-theme="dark"] .features .item,
+[data-theme="dark"] .most-played .item {
+  background-color: #232834;
+}
+
+[data-theme="dark"] .most-played {
+  background-color: #1b1f29;
+}
+
+[data-theme="dark"] .trending .item,
+[data-theme="dark"] .trending-box .item {
+  background-color: #1b1f29;
+}
+
+[data-theme="dark"] .trending .down-content span.category,
+[data-theme="dark"] .most-played .down-content span.category,
+[data-theme="dark"] .trending-box .down-content span.category {
+  color: #9aa0ad;
+}
+
+[data-theme="dark"] .cta .shop,
+[data-theme="dark"] .cta .subscribe,
+[data-theme="dark"] .tabs-content {
+  background-color: #1b1f29;
+}
+
+[data-theme="dark"] .main-banner .caption form input,
+[data-theme="dark"] .cta .subscribe form input {
+  background-color: #232834;
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .trending ul.trending-filter li a,
+[data-theme="dark"] .trending ul.pagination li a {
+  background-color: #232834;
+  color: #f2f3f5;
+}
+
+[data-theme="dark"] .single-product .sep {
+  background-color: #2c313d;
+}
+
+[data-theme="dark"] .single-product span.precio em {
+  color: #7a8091;
+}
+
+[data-theme="dark"] .single-product form input {
+  background-color: #1b1f29;
+  border-color: #2c313d;
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .single-product ul li span {
+  color: #9aa0ad;
+}
+
+[data-theme="dark"] .tabs-content .nav-link {
+  color: #f2f3f5;
+}
+
+[data-theme="dark"] .tabs-content ul.nav-tabs li {
+  border-right-color: #2c313d;
+}
+
+[data-theme="dark"] .form-control {
+  background-color: #232834;
+  border-color: #2c313d;
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .form-control::placeholder {
+  color: #8890a0;
+}
+
+[data-theme="dark"] form.shadow {
+  background-color: #1b1f29;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, .5) !important;
+}
+
+[data-theme="dark"] .error {
+  color: #ff8a80;
+}
+
+/* El pie de página siempre va sobre el degradado cian, en ambos temas */
+[data-theme="dark"] footer p {
+  color: #fff;
 }

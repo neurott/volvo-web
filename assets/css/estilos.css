@@ -5,6 +5,74 @@
 .cart-link {
   position: relative;
 }
+
+/* ---- Iconos de la fila "Entrega inmediata / Contáctanos / Novedades / Blog" ---- */
+.features .item .image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: normal;
+  margin: 0 auto;
+}
+.features .item .image i {
+  font-size: 34px;
+  color: #fff;
+}
+
+/* ---- Logo del header: un poco de aire arriba y abajo, con o sin scroll ---- */
+.header-area .main-nav .logo {
+  margin-top: 12px;
+  margin-bottom: 24px;
+}
+
+/* La barra de scroll tiene 80px fijos y no dejaba espacio para el margin-bottom */
+.background-header {
+  height: auto !important;
+  min-height: 80px;
+}
+
+/* Menú centrado verticalmente con el logo al hacer scroll, con letra un poco más grande */
+.background-header .main-nav {
+  align-items: center;
+}
+.background-header .main-nav .logo {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+.background-header .main-nav ul.nav {
+  margin-top: 0;
+}
+.background-header .main-nav .nav li {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+.background-header .main-nav .nav li a {
+  font-size: 16px;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+/* ---- Nav del header: Iniciar sesión / Registrarse mas juntos y hover mas marcado ---- */
+.header-area .main-nav .nav li:has(> a[href="login.html"]),
+.header-area .main-nav .nav li:has(> a[href="registro.html"]) {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.header-area .main-nav .nav li a[href="login.html"],
+.header-area .main-nav .nav li a[href="registro.html"] {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.header-area .main-nav .nav li:hover a {
+  background-color: rgba(255, 255, 255, 0.22);
+}
+@media (max-width: 767px) {
+  .header-area .main-nav .nav li a[href="login.html"],
+  .header-area .main-nav .nav li a[href="registro.html"] {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
 .busqueda-resultado {
   text-align: center;
   margin-bottom: 25px;
@@ -171,6 +239,55 @@ color: #721c24;
   flex-direction: column;
   min-height: 100vh;
   margin: 0;
+}
+/* ---- Titulo del banner principal en index.html ---- */
+/* main.css lo pensó como h2; lo pasamos a h1 (es el titulo real de la
+   pagina, index.html no tenia ningun h1) y repetimos aqui su estilo
+   para no tocar la plantilla. */
+.main-banner .caption h1 {
+  font-size: 48px;
+  color: #fff;
+  margin-top: 20px;
+  position: relative;
+  padding-bottom: 5px;
+  margin-bottom: 40px;
+}
+.main-banner .caption h1:after {
+  position: absolute;
+  background-image: linear-gradient(to right, var(--color-accent), transparent);
+  border-radius: 4px;
+  width: 202px;
+  height: 6px;
+  content: '';
+  left: 125px;
+  bottom: 0;
+}
+@media (max-width: 767px) {
+  .main-banner .caption h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .main-banner .caption h1 {
+    font-size: 26px;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .main-banner .caption h1 {
+    font-size: 36px;
+  }
+}
+/* ---- Titulo de .page-heading ---- */
+/* main.css lo pensó como h3; lo pasamos a h1 (es el titulo real de la
+   pagina) y repetimos aqui su estilo para no tocar la plantilla. */
+.page-heading h1 {
+  font-size: 48px;
+  text-transform: uppercase;
+  color: #fff;
+  margin-top: 20px;
+  position: relative;
+  margin-bottom: 20px;
 }
 /* ---- Tarjetas del equipo en nosotros.html ---- */
 /* Reutilizan .features de la plantilla, pero con un icono en vez de una imagen */
@@ -489,13 +606,7 @@ body {
     background: #f2f2f2;
 }
 
-/* ============================================================
-   RESPONSIVE — Panel de administración
-   En pantallas de hasta 768px (tablet y celular) la barra lateral
-   deja de ir al costado y pasa arriba, en horizontal.
-   Va al final del archivo para que estas reglas ganen sobre las
-   de arriba cuando se cumple la condición.
-   ============================================================ */
+
 @media (max-width: 768px) {
   /* La barra superior se apila para que quepa el nombre de la sesion */
   .admin-header {
@@ -537,4 +648,367 @@ body {
   .admin-card {
     min-width: 100%;
   }
+}
+
+/*Carrito compra*/
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 30px;
+  align-items: start;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: box-shadow .2s ease;
+}
+
+.cart-item:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item-thumb {
+  flex: 0 0 auto;
+  width: 78px;
+  height: 78px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #f1f0fe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-item-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cart-item-thumb i {
+  color: var(--color-primary);
+  font-size: 26px;
+}
+
+.cart-item-info {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.cart-item-nombre {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cart-item-cantidad {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 14px;
+}
+
+.cart-item-cantidad button {
+  width: 26px;
+  height: 26px;
+  border: 1px solid #ddd;
+  background-color: #fafafa;
+  border-radius: 4px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.cart-item-cantidad button:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.btn-eliminar {
+  border: none;
+  background: none;
+  color: #7a7a7a;
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+
+.btn-eliminar:hover {
+  color: #c0392b;
+}
+
+.cart-item-precio {
+  flex: 0 0 auto;
+  text-align: right;
+}
+
+.cart-item-precio strong {
+  display: block;
+  font-size: 16px;
+}
+
+.cart-item-preciounit {
+  display: block;
+  font-size: 12px;
+  color: #999;
+}
+
+.carrito-vacio {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+}
+
+.carrito-vacio a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.cart-summary {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 22px;
+  position: sticky;
+  top: 100px;
+}
+
+.cart-summary-titulo {
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #7a7a7a;
+  margin-bottom: 16px;
+}
+
+.cart-summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.cart-summary-total strong {
+  font-size: 24px;
+  color: var(--color-primary);
+}
+
+.cart-summary-nota {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 20px;
+}
+
+.btn-finalizar {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 25px;
+  background-color: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-finalizar:hover {
+  opacity: 0.9;
+}
+
+.btn-finalizar:disabled,
+.btn-vaciar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-vaciar {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  background: none;
+  color: #7a7a7a;
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.btn-vaciar:hover {
+  color: #c0392b;
+}
+
+@media (max-width: 767px) {
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-item {
+    flex-wrap: wrap;
+  }
+
+  .cart-item-precio {
+    margin-left: auto;
+  }
+}
+
+/* ---- Selector de tema claro/oscuro ---- */
+.theme-toggle {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--color-primary);
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .25);
+  z-index: 998;
+  transition: background-color .3s ease, transform .2s ease;
+}
+.theme-toggle:hover {
+  background-color: var(--color-accent);
+  transform: scale(1.05);
+}
+.theme-toggle:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+/* ---- Tema oscuro: ajustes propios del equipo ---- */
+[data-theme="dark"] .busqueda-resultado {
+  color: #c7cad1;
+}
+
+[data-theme="dark"] .equipo .item p,
+[data-theme="dark"] .faq .accordion-body {
+  color: #9aa0ad;
+}
+
+[data-theme="dark"] .faq .accordion-item {
+  border-color: #2c313d;
+}
+
+[data-theme="dark"] .faq .accordion-button {
+  background-color: #232834;
+  color: #f2f3f5;
+}
+
+[data-theme="dark"] .faq .accordion-button::after {
+  filter: invert(1) brightness(2);
+}
+
+[data-theme="dark"] .faq .accordion-body {
+  background-color: #1b1f29;
+}
+
+[data-theme="dark"] .opinion {
+  border-bottom-color: #2c313d;
+}
+
+[data-theme="dark"] .opinion p {
+  color: #c7cad1;
+}
+
+[data-theme="dark"] .menu-cuenta {
+  background: #232834;
+  border-color: #2c313d;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .4);
+}
+
+[data-theme="dark"] .menu-cuenta button {
+  color: #f2f3f5;
+}
+
+[data-theme="dark"] .menu-cuenta button:hover {
+  background: #1b1f29;
+}
+
+[data-theme="dark"] .admin-content table {
+  background-color: #232834;
+}
+
+[data-theme="dark"] .admin-content th,
+[data-theme="dark"] .admin-content td {
+  border-bottom-color: #2c313d;
+}
+
+[data-theme="dark"] .admin-content tbody tr:hover {
+  background-color: #1b1f29;
+}
+
+[data-theme="dark"] .admin-card {
+  background-color: #232834;
+  border-color: #2c313d;
+}
+
+[data-theme="dark"] .admin-card p {
+  color: #c7cad1;
+}
+
+[data-theme="dark"] .admin-content .campo input,
+[data-theme="dark"] .admin-content .campo select,
+[data-theme="dark"] .admin-content .campo textarea {
+  background-color: #232834;
+  border-color: #2c313d;
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .cart-item,
+[data-theme="dark"] .carrito-vacio,
+[data-theme="dark"] .cart-summary {
+  background-color: #232834;
+  border-color: #2c313d;
+}
+
+[data-theme="dark"] .cart-item:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .4);
+}
+
+[data-theme="dark"] .cart-item-thumb {
+  background-color: #1b1f29;
+}
+
+[data-theme="dark"] .cart-item-cantidad button {
+  background-color: #1b1f29;
+  border-color: #2c313d;
+  color: #f2f3f5;
+}
+
+[data-theme="dark"] .cart-item-preciounit,
+[data-theme="dark"] .cart-summary-nota,
+[data-theme="dark"] .cart-summary-titulo,
+[data-theme="dark"] .btn-eliminar,
+[data-theme="dark"] .btn-vaciar {
+  color: #9aa0ad;
 }

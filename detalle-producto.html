@@ -3,6 +3,17 @@
 
 <head>
   <meta charset="UTF-8">
+    <script>
+      (function () {
+        try {
+          var tema = localStorage.getItem('volvo-theme');
+          if (!tema) {
+            tema = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.setAttribute('data-theme', tema);
+        } catch (e) {}
+      })();
+    </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Volvo | Detalle del Producto</title>
   <meta name="description" content="Volvo, tienda online de videojuegos: detalle del producto.">
@@ -12,6 +23,7 @@
   <link rel="stylesheet" href="assets/css/fontawesome.css">
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/estilos.css">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
 </head>
 
 <body>
@@ -33,7 +45,7 @@
           <nav class="main-nav">
             <a href="index.html" class="logo">
               <img src="assets/images/volvo logo.png" alt="Logo volvo"
-                style="width: 200px; margin: 10px; padding: 10px;">
+                style="width: 200px;">
             </a>
 
             <ul class="nav">
@@ -63,7 +75,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <h3 id="prod-titulo-heading">Warframe</h3>
+          <h1 id="prod-titulo-heading">Warframe</h1>
           <span class="breadcrumb"><a href="index.html">Inicio</a> &gt; <a href="producto.html">Tienda</a> &gt;
             <span id="prod-breadcrumb">Warframe</span></span>
         </div>

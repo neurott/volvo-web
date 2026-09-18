@@ -3,6 +3,17 @@
 
 <head>
   <meta charset="UTF-8">
+    <script>
+      (function () {
+        try {
+          var tema = localStorage.getItem('volvo-theme');
+          if (!tema) {
+            tema = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.setAttribute('data-theme', tema);
+        } catch (e) {}
+      })();
+    </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Volvo | Carrito</title>
   <meta name="description" content="Volvo, tienda online de videojuegos: carrito">
@@ -12,6 +23,7 @@
   <link rel="stylesheet" href="assets/css/fontawesome.css">
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/estilos.css">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
 </head>
 
 <body>
@@ -33,7 +45,7 @@
           <nav class="main-nav">
             <a href="index.html" class="logo">
               <img src="assets/images/volvo logo.png" alt="Logo volvo"
-                style="width: 200px; margin: 10px; padding: 10px;">
+                style="width: 200px;">
             </a>
 
             <ul class="nav">
@@ -63,7 +75,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <h3>Carrito de Compras</h3>
+          <h1>Carrito de Compras</h1>
           <span class="breadcrumb"><a href="index.html">Inicio</a> &gt; Carrito</span>
         </div>
       </div>
@@ -72,29 +84,26 @@
 
   <main>
 
-  <section class="section" style="padding: 60px 0;">
+  <section class="section cart-section" style="padding: 60px 0;">
     <div class="container">
       <h2 class="visually-hidden">Productos en tu carrito</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Producto</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
-            <th>Subtotal</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody id="carrito-cuerpo">
-          <!-- acá el JS va a insertar las filas -->
-        </tbody>
-      </table>
+      <div class="cart-layout">
+        <div class="cart-items" id="carrito-cuerpo">
+          <!-- acá el JS va a insertar los items -->
+        </div>
 
-      <h4 id="carrito-total"></h4>
-
-      <button id="vaciar-carrito" type="button">Vaciar carrito</button>
-      <button id="finalizar-compra" type="button">Finalizar compra</button>
-      <p id="aviso" class="aviso" hidden></p>
+        <aside class="cart-summary">
+          <h4 class="cart-summary-titulo">Resumen del pedido</h4>
+          <div class="cart-summary-total">
+            <span>Total</span>
+            <strong id="carrito-total"></strong>
+          </div>
+          <p class="cart-summary-nota">Los impuestos, si aplican, se calculan al finalizar la compra.</p>
+          <button id="finalizar-compra" type="button" class="btn-finalizar">Finalizar compra</button>
+          <button id="vaciar-carrito" type="button" class="btn-vaciar">Vaciar carrito</button>
+          <p id="aviso" class="aviso" hidden></p>
+        </aside>
+      </div>
     </div>
   </section>
 

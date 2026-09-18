@@ -184,3 +184,48 @@ function cambiarBanner() {
 if (document.querySelector('.main-banner')) {
     setInterval(cambiarBanner, 10000);
 }
+
+// Selector de tema claro/oscuro. El atributo data-theme ya lo deja puesto
+// el script inline en el <head> (evita el parpadeo del tema equivocado).
+(function () {
+    "use strict";
+
+    var THEME_KEY = "volvo-theme";
+    var root = document.documentElement;
+
+    function guardarTema(tema) {
+        try {
+            localStorage.setItem(THEME_KEY, tema);
+        } catch (e) {}
+    }
+
+    function aplicarIcono(boton, tema) {
+        boton.innerHTML = tema === "dark"
+            ? '<i class="fa-solid fa-sun"></i>'
+            : '<i class="fa-solid fa-moon"></i>';
+    }
+
+    function crearBotonTema() {
+        var boton = document.createElement("button");
+        boton.type = "button";
+        boton.className = "theme-toggle";
+        boton.setAttribute("aria-label", "Cambiar entre tema claro y oscuro");
+        aplicarIcono(boton, root.getAttribute("data-theme"));
+
+        boton.addEventListener("click", function () {
+            var temaActual = root.getAttribute("data-theme") === "dark" ? "dark" : "light";
+            var nuevoTema = temaActual === "dark" ? "light" : "dark";
+            root.setAttribute("data-theme", nuevoTema);
+            guardarTema(nuevoTema);
+            aplicarIcono(boton, nuevoTema);
+        });
+
+        document.body.appendChild(boton);
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", crearBotonTema);
+    } else {
+        crearBotonTema();
+    }
+})();
